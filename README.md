@@ -1,7 +1,7 @@
 ## What to do if you commit a credential to GIT
 
 You have several options
-- Rebuild your git repo with a searhc/replace on ALL version of files - takes time and effort and it may be too late!
+- Rebuild your git repo with a search/replace on ALL version of files - takes time and effort and it may be too late!
 - Change the credential and then make sure this new credential is not added to GIT by either: 
   - Using `.gitignore` to exlcude files containing credentials.  Need reconstruct these files per developer. You're also not tracking their deployment version.
   - Encrypting credential files using [git-crypt](https://github.com/AGWA/git-crypt) or [git-secret](https://git-secret.io/). Will be binary in GIT so can't diff it.
