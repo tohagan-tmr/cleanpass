@@ -3,7 +3,7 @@
 You have several options
 - Rebuild your git repo [with a search/replace on ALL version of files](https://stackoverflow.com/questions/46950829/how-to-replace-a-string-in-whole-git-history) - takes time and effort and it may be too late!
 - Change the credential and then make sure this new credential is not added to GIT by either: 
-  - Using `.gitignore` to exlcude files containing credentials.  Need reconstruct these files per developer. You're also not tracking their deployment version.
+  - Use `.gitignore` to exlcude files containing credentials. Now need to reconstruct these files per developer. You're also not tracking their deployment version.
   - Encrypting credential files using [git-crypt](https://github.com/AGWA/git-crypt) or [git-secret](https://git-secret.io/). Will be binary in GIT so can't diff it.
   - Replace secrets embeeded in source with an alternative unique string in GIT repo using a clean/smudge filter as described below. Can now diff and track changes.
 
