@@ -61,17 +61,15 @@ mycredentials.json filter=cleanpass
 
 ## Test that the filtering works and recommit files with credentials
 
-Somehow you need to be able to recommit the files that contain credentials without changing their checked source code when they are checked out.
-You will also want to test that the `cleanpass` filters you added to `.gitattributes` are really working as expected. 
-I do this in VSCode (or some IDE) so you can see the file changes and verify they are working.
+Somehow you need to be able to recommit the files that contain credentials without changing their checked source code when they are checked out. You will also want to test that the `cleanpass` filters you added to `.gitattributes` are really working as expected.  I do this in VSCode (or some IDE tool) so you can see the file changes and verify they are working.
 
 Before you commit any file to GIT ...
 
-1.  Add updated `.gitattributes` file to staging 
-2.  Make some small change to each source file that you wish to expect to be filtered and add it to Staging
-3.  View changes to the Staged files. You should to confirm that the expected filter was applied (password replaced)
-4.  Now undo the change you made to each source file re-add these updated files to Staging
-  - Even though you've just undone changes to each file, they should remain in Staging as the filter was applied as well, if not then your filter didn't work
+1. Add updated `.gitattributes` file to staging 
+2. For each filtered file containing credentials ...
+  - Make some small change to the file and add it to Staging
+  - View the changes in Staging files to confirm that the expected filter was applied (e.g. password replaced)
+  - Now undo the change you made to the source file and re-add this change to Staging. Even though you've just undone changes to the file, it should remain in Staging as the filter was applied to it. If not then your filter didn't work!
 
 Now you're ready to commit the Staged files with the filter applied.
 
