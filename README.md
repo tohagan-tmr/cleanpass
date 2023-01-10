@@ -1,4 +1,13 @@
-## How to use the cleanpass scripts
+## What to do if you commit a credential to GIT
+
+You have several options
+- Rebuild your git repo with a searhc/replace on ALL version of files - takes time and effort and it may be too late!
+- Change the credential and then make sure this new credential is not added to GIT by either: 
+  - Using `.gitignore` to exlcude files containing credentials.  Need reconstruct these files per developer. You're also not tracking their deployment version.
+  - Encrypting credential files using [git-crypt](https://github.com/AGWA/git-crypt) or [git-secret](https://git-secret.io/). Will be binary in GIT so can't diff it.
+  - Replace secrets embeeded in source with an alternative unique string in GIT repo using a clean/smudge filter as described below. Can now diff and track changes.
+
+## How to use the cleanpass scripts to remove passwords from source code.
 
 This describes how to use `cleanpass-config.sh` and `cleanpass.sh` bash scripts to remove passwords from source code by replacing them with an alterntative unique string.  The same technique can be used to search & replace other configuration strings(e.g. to set a local developer path or local database name). 
 
