@@ -9,7 +9,7 @@ You have several options
 
 ## How to use the cleanpass scripts to remove passwords from source code.
 
-This describes how to use `cleanpass-config.sh` and `cleanpass.sh` bash scripts to remove passwords from source code by replacing them with an alterntative unique string.  The same technique can be used to search & replace other configuration strings(e.g. to set a local developer path or local database name). 
+This describes how to use `cleanpass-config.sh` and `cleanpass.sh` bash scripts to remove passwords from the source code in GIT by replacing them with an alterntative unique string.  The same technique can be used to search & replace other configuration strings(e.g. to set a local developer path or local database name). 
 
 You can add clean/smudge rules to a local `.git/config` file, but for passwords it's probably safer to configure these
 rules as a global GIT config saved to `~/.gitconfg` which is what the `cleanpass-config.sh` script does.
