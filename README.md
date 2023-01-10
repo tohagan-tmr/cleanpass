@@ -51,15 +51,39 @@ Per repository ... find files with a password and apply filter.
     Filter name: cleanpass2
     Password: ******
 
-These commands append rules to a .gitattributes file so you may want to review/edit these changes.
+These commands append rules to a .gitattributes file so you will want to review/edit these changes.
+Often you can just replace a list of files with a pattern.
+
+```
+mycredentials.json filter=cleanpass
+...
+```
+
+## Test that the filtering works and recommit files with credentials
+
+Somehow you need to be able to recommit the files that contain credentials without changing their checked source code when they are checked out.
+You will also want to test that the `cleanpass` filters you added to `.gitattributes` are really working as expected. 
+I do this in VSCode (or some IDE) so you can see the file changes and verify they are working.
+
+Before you commit any file to GIT ...
+
+1.  Add updated `.gitattributes` file to staging 
+2.  Make some small change to each source file that you wish to expect to be filtered and add it to Staging
+3.  View changes to the Staged files. You should to confirm that the expected filter was applied (password replaced)
+4.  Now undo the change you made to each source file re-add these updated files to Staging
+  - Even though you've just undone changes to each file, they should remain in Staging as the filter was applied as well, if not then your filter didn't work
+
+Now you're ready to commit the Staged files with the filter applied.
+
+## Credential rotation
+
+You should be regularly changing system credentials. When you do, don't forget to update the filter rules in `~/.gitconfig`.
 
 ## Known limitations
 
 These scripts currently won't work with passwords or replace strings that contain the '/' character. This is fixable - just not done yet.
 
-If you need to replace mulitple passwords in one file then the current solution won't work as GIT will only apply *the last* filter per filename referenced by a .gitattributes file.
-
-To fix this, combine mulitple search/replace instructions into a single sed command like so and give the filter a new name.
+If you need to replace mulitple passwords in one file then the current solution won't work as GIT will only apply *the last* filter per filename referenced by a .gitattributes file.  To fix this, combine mulitple search/replace instructions into a single sed command like so and give the filter a new name.
 
     $ git config --global "filter.${myfilter}.clean" "sed -e 's/${pass1}/${replace1}/g' -e 's/${pass2}/${replace2}/g'"
     $ git config --global "filter.${myfilter}.smudge" "sed --e 's/${replace1}/${pass1}/g' e 's/${replace2}/${pass2}/g'"
