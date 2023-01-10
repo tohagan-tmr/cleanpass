@@ -1,6 +1,8 @@
-## What to do if you commit a credential to GIT
+## Disclaimer
 
-It is solely your responsability to confirm the validity and correctness of this information.  This is not intended as an endorsement of any software tools referenced. 
+It is solely your responsability to confirm the validity and correctness of this information.  This is not intended as an endorsement of any software or information references. 
+
+## What to do if you commit a credential to GIT
 
 You have several options
 - Rebuild your git repo [with a search/replace on ALL version of files](https://stackoverflow.com/questions/46950829/how-to-replace-a-string-in-whole-git-history) - takes time and effort and it may be too late!
