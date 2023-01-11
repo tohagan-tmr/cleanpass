@@ -12,7 +12,7 @@ Because GIT will retain all past versions of your source code, you have several 
     - These files will now be binary in GIT so you can't diff them. 
     - You may consider this a good option when the file is mostly credentials. 
   - Replace secrets embeeded in source with an alternative unique string in GIT repo
-    - Use a GIT clean/smudge filter as described below. 
+    - Use a GIT clean/smudge filter _as described below_. 
     - You can now diff and track changes to other parts of this file. 
     - You may consider this a good option if you're required to embed credentials in source code.
 
