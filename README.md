@@ -2,9 +2,9 @@
 
 Because GIT will retain all past versions of your source code, you have several options ...
 - Rebuild your git repo [with a search/replace on ALL version of files](https://stackoverflow.com/questions/46950829/how-to-replace-a-string-in-whole-git-history) - takes time and effort and it may be too late if the source code has been publicly or internally exposed.
-- **Change the credentials** and then make sure these new secrests are not added to GIT by either: 
+- **Change the credentials** and then make sure these new secrets are not added to GIT by either: 
   - Move the credentials into environment variables or a secret vault and update your code.
-  - Using `.gitignore` to exlcude files containing credentials. 
+  - Use `.gitignore` to exclude files containing credentials. 
     - If possible, it's safest to gather these files into a single file or folder so you can exclude them with a single `.gitignore` rule
     - Preserve these files in a password manager or secret vault.
     - You now need to be able to reconstruct the credential files **per developer** which you'll need to document.
@@ -12,14 +12,14 @@ Because GIT will retain all past versions of your source code, you have several 
   - Encrypt your credential files using [git-crypt](https://github.com/AGWA/git-crypt). 
     - These files will now be binary in GIT so you can't diff them. 
     - You may consider this a good option when the file is mostly credentials. 
-  - Replace secrets embeeded in source with an alternative unique string in GIT repo
+  - Replace secrets embedded in source with an alternative unique string in GIT repo
     - Use a GIT clean/smudge filter _as described below_. 
     - You can now diff and track changes to other parts of this file. 
     - You may consider this a good option if you're required to embed credentials in source code.
 
 ## How to use the cleanpass scripts to remove passwords from source code.
 
-This describes how to use `cleanpass-config.sh` and `cleanpass.sh` bash scripts to remove passwords from the source code in GIT by replacing them with an alterntative unique string.  The same technique can be used to search & replace other configuration strings(e.g. to set a local developer path or local database name). 
+This describes how to use `cleanpass-config.sh` and `cleanpass.sh` bash scripts to remove passwords from the source code in GIT by replacing them with an alternative unique string.  The same technique can be used to search & replace other configuration strings(e.g. to set a local developer path or local database name). 
 
 You can add clean/smudge rules to a local `.git/config` file, but for passwords it's probably safer to configure these
 rules as a global GIT config saved to `~/.gitconfg` which is what the `cleanpass-config.sh` script does.
@@ -39,7 +39,7 @@ To avoid logging the password to your bash history file use ...
 
 ## Setup GIT's Smudge and Clean filters to replace embedded passwords.
 
-These script prompt for passwords rather than use paramaters to avoid logging the password to your bash history file
+These script prompt for passwords rather than use parameters to avoid logging the password to your bash history file
 
 Create password filters in GIT global settings
 
@@ -79,7 +79,7 @@ Before you commit any file to GIT ...
 2. For each filtered file containing credentials ...
   - Make some small change to the file and add it to Staging
   - View the changes in Staging files to confirm that the expected filter was applied (e.g. password replaced)
-  - Now undo the change you made to the source file and re-add this change to Staging. Even though you've just undone changes to the file, it should remain in Staging as the filter was applied to it. If not then your filter didn't work!
+  - Now undo the change you made to the source file and re-add this change to Staging. Even though you've just undone changes to the file, it should remain in Staging as the filter was applied to it. If not, then your filter didn't work!
 
 Now you're ready to commit the Staged files with the filter applied.
 
@@ -91,11 +91,11 @@ You should be regularly changing system credentials. When you do, don't forget t
 
 These scripts currently won't work with passwords or replace strings that contain the '/' character. This is fixable - just not done yet.
 
-If you need to replace mulitple passwords in one file then the current solution won't work as GIT will only apply *the last* filter per filename referenced by a .gitattributes file.  To fix this, combine mulitple search/replace instructions into a single sed command like so and give the filter a new name.
+If you need to replace multiple passwords in one file then the current solution won't work as GIT will only apply *the last* filter per filename referenced by a .gitattributes file.  To fix this, combine multiple search/replace instructions into a single sed command like so and give the filter a new name.
 
     $ git config --global "filter.${myfilter}.clean" "sed -e 's/${pass1}/${replace1}/g' -e 's/${pass2}/${replace2}/g'"
     $ git config --global "filter.${myfilter}.smudge" "sed --e 's/${replace1}/${pass1}/g' e 's/${replace2}/${pass2}/g'"
 
 ## Disclaimer
 
-It is solely your responsability to confirm the validity and correctness of this information.  This is not intended as an endorsement of any software or information references. 
+It is solely your responsibility to confirm the validity and correctness of this information.  This is not intended as an endorsement of any software or information references. 
