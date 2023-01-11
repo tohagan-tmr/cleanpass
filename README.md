@@ -12,9 +12,10 @@ Because GIT will retain all past versions of your source code, you have several 
   - You now need to be able to reconstruct the credential files **per developer** which you'll need to document.
   - You're no longer tracking changes to these files, in particular their deployment version. 
 
-### 3. Encrypt your credential files using [git-crypt](https://github.com/AGWA/git-crypt). 
+### 3. Encrypt your credential files using a tool like [git-crypt](https://github.com/AGWA/git-crypt). 
   - These files will now be binary in GIT so you can't diff them. 
   - You may consider this a good option when the file is mostly credentials. 
+  - This is not intended as an endorsement of this software. It's up to you to assess its risk.
 
 ### 4. Replace secrets embedded in source with an alternative unique string in GIT repo
   - Use a GIT clean/smudge filter _as described below_. 
