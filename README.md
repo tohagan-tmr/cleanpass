@@ -90,7 +90,10 @@ Now you're ready to commit the Staged files with the filter applied.
 
 ## Credential rotation
 
-You should be regularly changing system credentials. When you do, don't forget to update the filter rules in `~/.gitconfig`.
+You should be regularly changing system credentials. 
+When you do, you'll need to change the values in several places 
+1.  In your checked out source code.
+2.  Twice in the filter rules in `~/.gitconfig`.
 
 ## Known limitations
 
