@@ -1,7 +1,3 @@
-## Disclaimer
-
-It is solely your responsability to confirm the validity and correctness of this information.  This is not intended as an endorsement of any software or information references. 
-
 ## What to do if you commit a credential to GIT
 
 You have several options
@@ -89,3 +85,7 @@ If you need to replace mulitple passwords in one file then the current solution 
 
     $ git config --global "filter.${myfilter}.clean" "sed -e 's/${pass1}/${replace1}/g' -e 's/${pass2}/${replace2}/g'"
     $ git config --global "filter.${myfilter}.smudge" "sed --e 's/${replace1}/${pass1}/g' e 's/${replace2}/${pass2}/g'"
+
+## Disclaimer
+
+It is solely your responsability to confirm the validity and correctness of this information.  This is not intended as an endorsement of any software or information references. 
