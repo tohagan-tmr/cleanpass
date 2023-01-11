@@ -6,7 +6,7 @@ Because GIT will retain all past versions of your source code, you have several 
   - Using `.gitignore` to exlcude files containing credentials. 
     - If possible, it's safest to gather these files into a single file or folder so you can exclude them with a single `.gitignore` rule
     - Preserve these files in a password manager or secret vault.
-    - You now need to be able to reconstruct the credential files **per developer**.
+    - You now need to be able to reconstruct the credential files **per developer** which you'll need to document.
     - You're no longer tracking changes to these files, in particular their deployment version. 
   - Encrypt your credential files using [git-crypt](https://github.com/AGWA/git-crypt). 
     - These files will now be binary in GIT so you can't diff them. 
