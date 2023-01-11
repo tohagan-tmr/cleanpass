@@ -1,11 +1,18 @@
-## What to do if you commit a credential to GIT
+## What to do if you commit a secret or credential to GIT
 
 You have several options
 - Rebuild your git repo [with a search/replace on ALL version of files](https://stackoverflow.com/questions/46950829/how-to-replace-a-string-in-whole-git-history) - takes time and effort and it may be too late!
 - **Change the credentials** and then make sure this new credential is not added to GIT by either: 
-  - Using `.gitignore` to exlcude files containing credentials. Now need to reconstruct these files per developer. You're also not tracking their deployment version. Best to gather these files into a single excluded folder.
-  - Encrypt your credential files using [git-crypt](https://github.com/AGWA/git-crypt). Will be binary in GIT so can't diff it. A good option when the file is mostly credentials. 
-  - Replace secrets embeeded in source with an alternative unique string in GIT repo using a clean/smudge filter as described below. Can now diff and track changes to other parts of this file. A good option when you're forced to embed credentials into source code.
+  - Using `.gitignore` to exlcude files containing credentials. 
+    - You now need to reconstruct these files per developer. 
+    - You're also not tracking their deployment version. 
+    - Best to gather these files into a single folder so you can exclude them with a single `.gitignore` rule
+  - Encrypt your credential files using [git-crypt](https://github.com/AGWA/git-crypt). 
+    - These files will now be binary in GIT so you can't diff them. 
+    - You may consider this a good option when the file is mostly credentials. 
+  - Replace secrets embeeded in source with an alternative unique string in GIT repo using a clean/smudge filter as described below. 
+    - You can now diff and track changes to other parts of this file. 
+    - You may consider this good option if you're required to embed credentials in source code.
 
 ## How to use the cleanpass scripts to remove passwords from source code.
 
