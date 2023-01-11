@@ -11,7 +11,7 @@ read -s -p "Password: " pass
 echo
 echo "Appending to .gitattributes ..."
 
-grep -l "$pass" | grep -v '\.exe$' | sed "s/.*/\0 filter=$filter/" | tee -a .gitattributes
+grep -rl "$pass" | sed "s/.*/\0 filter=$filter/" | tee -a .gitattributes
 
 echo "Check files added toend of .gitattributes file" >&2
 echo "Recommit these files and change password" >&2
