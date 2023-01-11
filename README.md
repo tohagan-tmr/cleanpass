@@ -3,16 +3,16 @@
 Because GIT will retain all past versions of your source code, you have several options ...
 - Rebuild your git repo [with a search/replace on ALL version of files](https://stackoverflow.com/questions/46950829/how-to-replace-a-string-in-whole-git-history) - takes time and effort and it may be too late if the source code has been publicly or internally exposed.
 - **Change the credentials** and then choose one of the following options to prevent this in the future ... 
-  1. Move all credentials into environment variables or a secret vault and revise your code to use these.
-  2. Use `.gitignore` to exclude files containing credentials. 
+  - Move all credentials into environment variables or a secret vault and revise your code to use these.
+  - Use `.gitignore` to exclude files containing credentials. 
     - If possible, it's safest to gather these files into a single file or folder so you can exclude them with a single `.gitignore` rule
     - Preserve these files in a password manager or secret vault.
     - You now need to be able to reconstruct the credential files **per developer** which you'll need to document.
     - You're no longer tracking changes to these files, in particular their deployment version. 
-  3. Encrypt your credential files using [git-crypt](https://github.com/AGWA/git-crypt). 
+  - Encrypt your credential files using [git-crypt](https://github.com/AGWA/git-crypt). 
     - These files will now be binary in GIT so you can't diff them. 
     - You may consider this a good option when the file is mostly credentials. 
-  4. Replace secrets embedded in source with an alternative unique string in GIT repo
+  - Replace secrets embedded in source with an alternative unique string in GIT repo
     - Use a GIT clean/smudge filter _as described below_. 
     - You can now diff and track changes to other parts of this file. 
     - You may consider this a good option if you're required to embed credentials in source code.
