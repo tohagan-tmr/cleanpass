@@ -6,7 +6,7 @@
 ## Add file filters to .gitattributes file
 
 read -p "Filter name: " filter
-read -s -p "Password: " pass
+echo "Password: " && read pass
 
 echo
 echo "Appending to .gitattributes ..."
