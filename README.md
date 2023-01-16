@@ -4,9 +4,9 @@ Because GIT will retain all past versions of your source code, you have several 
 - Rebuild and replace your git repo [with a search/replace on ALL versions of all files](https://stackoverflow.com/questions/46950829/how-to-replace-a-string-in-whole-git-history) - takes time and effort and it may be too late if the GIT repository has been publicly or internally exposed.
 - **Change the credentials** and then choose one of the following options to prevent this in the future ... 
 
-### 1. Move all credentials into environment variables or a secret vault service and revise your code to use these.
+### 1. Move all credentials into environment variables or a secret vault service and revise your code and configuration documentation to use these.
   - Typically the best option. 
-  - Vault service may provide versioning
+  - Vault service may also provide key versioning
 
 ### 2. Use `.gitignore` to exclude files containing credentials. 
   - If possible, it's safest to gather these files into a single file or folder or naming pattern so you can exclude them with a single `.gitignore` rule.
