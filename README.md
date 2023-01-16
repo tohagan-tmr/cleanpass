@@ -1,7 +1,7 @@
 ## What to do if you commit a secret or credential to GIT
 
 Because GIT will retain all past versions of your source code, you have several options ...
-- Rebuild your git repo [with a search/replace on ALL version of files](https://stackoverflow.com/questions/46950829/how-to-replace-a-string-in-whole-git-history) - takes time and effort and it may be too late if the source code has been publicly or internally exposed.
+- Rebuild and replace your git repo [with a search/replace on ALL versions of all files](https://stackoverflow.com/questions/46950829/how-to-replace-a-string-in-whole-git-history) - takes time and effort and it may be too late if the repo has been publicly or internally exposed.
 - **Change the credentials** and then choose one of the following options to prevent this in the future ... 
 
 ### 1. Move all credentials into environment variables or a secret vault service and revise your code to use these.
