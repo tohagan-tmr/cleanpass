@@ -102,9 +102,9 @@ When you do, you'll need to change the values in several places
 
 ## Known limitations
 
-These scripts currently won't work with passwords or replace strings that contain the '/' character. This is fixable - just not done yet.
+These scripts currently won't work with passwords or replacement strings that contain the '/' character. This is fixable - just not done yet.
 
-If you need to replace multiple passwords in one file then the current solution won't work as GIT will only apply *the last* filter per filename referenced by a .gitattributes file.  To fix this, combine multiple search/replace instructions into a single sed command like so and give the filter a new name.
+If you need to replace multiple passwords in one file then the current solution won't work as GIT will only apply *the last* filter per filename referenced by a .gitattributes file.  To fix this, instead of using `cleanpass-config.sh` ... combine multiple search/replace instructions into a single sed command like so and give the filter a new name. You can use `cleanpass.sh` with this new filter.
 
     $ git config --global "filter.${myfilter}.clean" "sed -e 's/${pass1}/${replace1}/g' -e 's/${pass2}/${replace2}/g'"
     $ git config --global "filter.${myfilter}.smudge" "sed --e 's/${replace1}/${pass1}/g' e 's/${replace2}/${pass2}/g'"
