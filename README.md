@@ -48,7 +48,7 @@ To avoid logging the password to your bash history file use ...
 
 These script prompt for passwords rather than use parameters to avoid logging the password to your bash history file
 
-Create password filters in GIT global settings
+Create password filters in GIT **global** settings so they can be used by multiple GIT repositories. 
 
     $ cleanpass-config.sh cleanpass1
     Password: ******
@@ -75,6 +75,10 @@ Often you can just replace a list of files with a pattern.
 mycredentials.json filter=cleanpass
 ...
 ```
+
+## Other use cases
+
+Although our use case is password or secret replacement but the same technique can be used to replace other values.  For example, a developer could use this method to configure local development path names or test server hostnames.  Generally the same can be better achived using environment variable or configuration files but there may be siutations where these options won't work.  I've used legacy development tools that excluded these options.
 
 ## Test that the filtering works and recommit files with credentials
 
