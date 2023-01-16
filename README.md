@@ -4,29 +4,29 @@ Because GIT will retain all past versions of your source code, you have several 
 - Rebuild and replace your git repo [with a search/replace on ALL versions of all files](https://stackoverflow.com/questions/46950829/how-to-replace-a-string-in-whole-git-history) - takes time and effort and it may be too late if the GIT repository has been publicly or internally exposed.
 - **Change the credentials** and then choose one of the following options to prevent this in the future ... 
 
-### 1. Move all credentials into environment variables or a secret vault service and revise your code and configuration documentation to use these.
+### 1. Move all credentials into environment variables or a secret vault service (with API access) and revise your code and configuration documentation to use these.
   - Typically the best option. 
-  - Vault service may also provide key versioning and key rotation reminders.
+  - A cloud vault service may also provide key versioning and key rotation reminders.
 
 ### 2. Use `.gitignore` to exclude files containing credentials. 
   - If possible, it's safest to gather these files into a single file or folder or naming pattern so you can exclude them with a single `.gitignore` rule.
-  - Preserve these files in a password manager or secret vault.
-  - You now need to be able to reconstruct the credential files **per developer** which you'll need to document.
-  - You're no longer tracking changes to these files, in particular their deployment version. 
+  - Preserve these files in a password manager and/or secret vault.
+  - You now need to be able to reconstruct the credential files **per developer** which you'll need to carefully document.
+  - You're no longer tracking changes to these files, in particular their deployment version which may be a risk.
 
 ### 3. Encrypt your credential files using a tool like [git-crypt](https://github.com/AGWA/git-crypt). 
   - These files will now be binary in GIT so you can't diff them. 
-  - You may consider this a good option when the file is mostly credentials. 
-  - This is not intended as an endorsement of this software. It's up to you to assess its risk.
+  - You may consider this a good option when the files are mostly credentials and rarely change. 
+  - This is not intended as an endorsement of `git-crypt`. It's up to you to assess its risk.
 
-### 4. Replace secrets embedded in source with an alternative unique string in GIT repo
+### 4. Replace secrets embedded in source code with an alternative unique string in GIT repo
   - Use a GIT clean/smudge filter _as described below_. 
   - You can now diff and track changes to other parts of this file. 
   - You may consider this a good option if you're forced to embed credentials in source code.
 
 ## How to use the cleanpass scripts to remove passwords from source code.
 
-This describes how to use `cleanpass-config.sh` and `cleanpass.sh` bash scripts to remove passwords from the source code in GIT by replacing them with an alternative unique string.  The same technique can be used to search & replace other configuration strings(e.g. to set a local developer path or local database name). 
+This describes how to use `cleanpass-config.sh` and `cleanpass.sh` bash scripts to remove passwords from the source code in GIT by replacing them with an alternative unique string. The same technique can be used to search & replace other configuration strings(e.g. to set a local developer path or local database name). 
 
 You can add clean/smudge rules to a local `.git/config` file, but for passwords it's probably safer to configure these
 rules as a global GIT config saved to `~/.gitconfg` which is what the `cleanpass-config.sh` script does.
@@ -81,7 +81,7 @@ Although our use case is password or secret replacement, the same technique can 
 
 ## Test that the filtering works and recommit files with credentials
 
-Somehow you need to be able to recommit the files that contain credentials without changing their checked source code when they are checked out. You will also want to test that the `cleanpass` filters you added to `.gitattributes` are really working as expected.  I do this in VSCode (or some IDE tool) so you can see the file changes and verify they are working.
+Somehow you need to be able to recommit the files that contain credentials without changing their checked source code when they are checked out. You will also need to test that the `cleanpass` filters you added to `.gitattributes` are really working as expected.  I do this in VSCode (or some IDE tool) so you can see the file changes and verify they are working.
 
 Before you commit any file to GIT ...
 
