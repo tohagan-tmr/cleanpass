@@ -6,7 +6,7 @@ Because GIT will retain all past versions of your source code, you have several 
 
 ### 1. Move all credentials into environment variables or a secret vault service and revise your code and configuration documentation to use these.
   - Typically the best option. 
-  - Vault service may also provide key versioning
+  - Vault service may also provide key versioning and key rotation reminders.
 
 ### 2. Use `.gitignore` to exclude files containing credentials. 
   - If possible, it's safest to gather these files into a single file or folder or naming pattern so you can exclude them with a single `.gitignore` rule.
