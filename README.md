@@ -111,4 +111,4 @@ If you need to replace multiple passwords in one file then the current solution 
 
 ## Disclaimer
 
-It is solely your responsibility to confirm the validity and correctness of this information.  This is not intended as an endorsement of any software or information references. Note also the [MIT license](LICENSE) terms
+It is solely your responsibility to confirm the validity and correctness of this information. This is not intended as an endorsement of any software or information references. Note also the [MIT license](LICENSE) terms. 
