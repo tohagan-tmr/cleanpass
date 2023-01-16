@@ -77,7 +77,7 @@ mycredentials.json filter=cleanpass
 ```
 ## Other use cases
 
-Although our use case is password or secret replacement but the same technique can be used to replace other values.  For example, a developer could use this method to configure local development path names or test server hostnames.  Generally the same can be better achived using environment variable or configuration files but there may be siutations where these options won't work.  I've used legacy development tools that excluded these options.
+Although our use case is password or secret replacement, the same technique can be used to replace other values.  For example, a developer could use this method to configure local development path names or test server hostnames.  Generally the same can be better achived using environment variable or configuration files but there may be siutations where these options won't work.  I've used legacy development tools that excluded these options.
 
 ## Test that the filtering works and recommit files with credentials
 
