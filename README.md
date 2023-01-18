@@ -24,7 +24,7 @@ Because GIT will retain all past versions of your source code, you have several 
   - You can now diff and track changes to other parts of this file. 
   - You may consider this a good option if you're forced to embed credentials in source code.
 
-## How to use the cleanpass scripts to remove passwords from source code.
+## How to use the cleanpass scripts to remove passwords embedded in source code.
 
 This describes how to use `cleanpass-config.sh` and `cleanpass.sh` bash scripts to remove passwords from the source code in GIT by replacing them with an alternative unique string. The same technique can be used to search & replace other configuration strings(e.g. to set a local developer path or local database name). 
 
