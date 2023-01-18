@@ -8,11 +8,11 @@ Because GIT will retain all past versions of your source code, you have several 
   - Typically the best option. 
   - A cloud vault service may also provide key versioning and key rotation reminders.
 
-### 2. Use `.gitignore` to exclude files containing credentials. 
-  - If possible, it's safest to gather these files into a single file or folder or naming pattern so you can exclude them with a single `.gitignore` rule.
-  - Preserve these files in a password manager and/or secret vault.
-  - You now need to be able to reconstruct the credential files **per developer** which you'll need to carefully document.
-  - You're no longer tracking changes to these files, in particular their deployment version which may be a risk.
+### 2. Use `.gitignore` to exclude files containing secrets. 
+  - To reduce risk, its safest to gather these files into a single file or folder or naming pattern so you can exclude all secrets with a single `.gitignore` rule.
+  - Preserve these files or secrets in a password manager.
+  - You now need to be able to reconstruct these credential files in the future so you'll need to carefully document paths & formats and perhaps commit a sample file.
+  - You're no longer tracking changes to these files, in particular their deployment version.
 
 ### 3. Encrypt your credential files using a tool like [git-crypt](https://github.com/AGWA/git-crypt). 
   - These files will now be binary in GIT so you can't diff them. 
